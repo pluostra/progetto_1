@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -31,34 +31,67 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   
-
-
-
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context); //riga 73 nel child Text theme non avrebbe funzionato, ho definito oggetto
+    int currentPageIndex = 0;
     return Scaffold(
-      body: Center(
-        child: Text(widget.title),
-      ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: true,
-          items:  const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.newspaper_outlined),
-              label: 'news',
+        bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: Colors.blueGrey,
+          selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+        NavigationDestination(
+          selectedIcon: Icon(Icons.newspaper_outlined),
+          icon: Icon(Icons.newspaper_outlined),
+          label: 'Novità',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.calendar_month_sharp),
+          label:"Eventi",
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.more_vert_sharp),
+          label: 'Altro',
+        ),
+      ],
+        ),
+      body: <Widget>[
+        Card(
+          shadowColor: Colors.transparent,
+          margin: const EdgeInsets.all(8.0),
+          child: SizedBox.expand(
+            child: Center(
+              child: Text('Novità', style: theme.textTheme.titleLarge),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_sharp),
-              label: 'Eventi',
+          ),
+        ),
+        Card(
+          shadowColor: Colors.transparent,
+          margin: const EdgeInsets.all(8.0),
+          child: SizedBox.expand(
+            child: Center(
+              child: Text('Eventi', style: theme.textTheme.titleLarge),
             ),
-
-            BottomNavigationBarItem(
-              icon: Icon(Icons.more_vert_sharp),
-              label: 'Altro',
+          ),
+        ),
+        Card(
+          shadowColor: Colors.transparent,
+          margin: const EdgeInsets.all(8.0),
+          child: SizedBox.expand(
+            child: Center(
+              child: Text('Altro', style: theme.textTheme.titleLarge),
             ),
-          ],
-      )
-      );
+          ),
+        ),
+      ][currentPageIndex],
+    );
   }
 }
+
+
