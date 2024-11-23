@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -30,37 +29,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
+  int  currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context); //riga 73 nel child Text theme non avrebbe funzionato, ho definito oggetto
-    int currentPageIndex = 0;
     return Scaffold(
-
-        bottomNavigationBar: NavigationBar(
+      bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
           });
         },
         indicatorColor: Colors.blueGrey,
-          selectedIndex: currentPageIndex,
+        selectedIndex: currentPageIndex,
         destinations: const <Widget>[
-        NavigationDestination(
-          selectedIcon: Icon(Icons.newspaper_outlined),
-          icon: Icon(Icons.newspaper_outlined),
-          label: 'Novità',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.calendar_month_sharp),
-          label:"Eventi",
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.more_vert_sharp),
-          label: 'Altro',
-        ),
-      ],
-        ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.newspaper_outlined),
+            icon: Icon(Icons.newspaper_outlined),
+            label: 'Novità',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.calendar_month_sharp),
+            label:"Eventi",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.more_vert_sharp),
+            label: 'Altro',
+          ),
+        ],
+      ),
       body: <Widget>[
         Card(
           shadowColor: Colors.transparent,
@@ -72,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Card(
-          shadowColor: Colors.transparent,
+          shadowColor: Colors.black,
           margin: const EdgeInsets.all(8.0),
           child: SizedBox.expand(
             child: Center(
