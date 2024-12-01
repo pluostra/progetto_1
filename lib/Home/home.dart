@@ -63,7 +63,7 @@ class _Home extends State<Home> {
                   children: <Widget>[
                     Expanded(
                       child: Card(
-                        shadowColor: Colors.black,
+                        shadowColor: Colors.black12,
                         margin: const EdgeInsets.all(80.0),
                       child: Center(
                       child: Text('Events', style: theme.textTheme.titleLarge),
