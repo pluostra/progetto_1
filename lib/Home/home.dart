@@ -66,7 +66,7 @@ class _Home extends State<Home> {
                         shadowColor: Colors.black,
                         margin: const EdgeInsets.all(80.0),
                       child: Center(
-                      child: Text('Eventi', style: theme.textTheme.titleLarge),
+                      child: Text('Events', style: theme.textTheme.titleLarge),
                       ),
                       ),
                     ),
