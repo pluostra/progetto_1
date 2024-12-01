@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/Home/home.dart';
 
 class Password extends StatefulWidget{
   const Password({super.key});
@@ -15,6 +16,7 @@ class _Password extends State<Password>{
       body:Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
@@ -30,7 +32,18 @@ class _Password extends State<Password>{
                 )
               ),
             ),
-            MaterialButton(onPressed: (){})
+            MaterialButton(
+                onPressed: (){
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => Home(),
+                   ),
+                   );
+                },
+                color: Colors.blueGrey,
+              child: const Text('Submit', style: TextStyle(color: Colors.white)),
+            ),
           ],
         ),
       ),
